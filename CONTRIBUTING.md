@@ -53,7 +53,8 @@ cd ezpay
 ### 3. Install Dependencies
 
 ```bash
-npm install
+cd backend
+cargo build
 ```
 
 ### 4. Configure Environment Variables
@@ -69,6 +70,8 @@ Update the `.env` file with your local configuration.
 Example:
 
 ```
+PORT=3001
+RUST_LOG=ezpay_backend=info,tower_http=info
 STELLAR_NETWORK=testnet
 STELLAR_RPC_URL=
 STELLAR_SECRET_KEY=
@@ -79,21 +82,20 @@ DATABASE_URL=
 ### 5. Run the Development Server
 
 ```bash
-npm run dev
+cargo run
 ```
 
 ## Project Structure
 
 ```
-src/
- ├── config/        # Configuration files
- ├── controllers/   # Request handlers
- ├── services/      # Business logic
- ├── routes/        # API routes
- ├── models/        # Database models
- ├── middleware/    # Express middleware
- ├── utils/         # Helper functions
- └── app.ts         # App entry point
+backend/
+ ├── Cargo.toml
+ ├── .env.example
+ └── src/
+     └── main.rs
+
+frontend/
+smart-contract/
 ```
 
 ## Branching Strategy
@@ -156,7 +158,7 @@ Adds validation for merchant wallet addresses before submitting transactions to 
 
 Please follow these guidelines when contributing code:
 
-- Use **TypeScript**
+- Use **Rust** for backend development
 - Write modular and reusable code
 - Use descriptive variable and function names
 - Add comments for complex logic

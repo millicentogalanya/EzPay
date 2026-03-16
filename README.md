@@ -106,9 +106,8 @@ The backend manages:
 
 **Backend**
 
-- Node.js
-- TypeScript
-- Express.js
+- Rust
+- Axum
 
 **Blockchain SDK**
 
@@ -223,7 +222,8 @@ cd ezpay
 ### Install Dependencies
 
 ```bash
-npm install
+cd backend
+cargo build
 ```
 
 ### Configure Environment Variables
@@ -231,6 +231,8 @@ npm install
 Create a `.env` file using the example below.
 
 ```
+PORT=3001
+RUST_LOG=ezpay_backend=info,tower_http=info
 STELLAR_NETWORK=testnet
 STELLAR_RPC_URL=
 STELLAR_SECRET_KEY=
@@ -241,7 +243,7 @@ DATABASE_URL=
 ### Run Development Server
 
 ```bash
-npm run dev
+cargo run
 ```
 
 ## Project Status
