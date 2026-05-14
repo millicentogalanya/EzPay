@@ -13,6 +13,10 @@ tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter", "fmt"] }
 tower-http = { version = "0.5.2", features = ["cors", "trace"] }
 anyhow = "1.0.86"
+sqlx = { version = "0.8.2", features = ["runtime-tokio-rustls", "postgres", "chrono", "uuid"] }
+deadpool-postgres = "0.14.0"
+tokio-postgres = "0.7.11"
+deadpool = "0.12.1"
 
 [profile.release]
 lto = true
