@@ -1,8 +1,15 @@
-export default function HomePage() {
+import { Hero } from '@/components/landing/Hero';
+import { Features } from '@/components/landing/Features';
+import { HowItWorks } from '@/components/landing/HowItWorks';
+import { Footer } from '@/components/landing/Footer';
+
+export default function Home() {
   return (
-    <main style={{ padding: 24, fontFamily: "system-ui" }}>
-      <h1>EzPay</h1>
-      <p>Stellar-powered stablecoin payments.</p>
+    <main className="min-h-screen bg-background">
+      <Hero />
+      <Features />
+      <HowItWorks />
+      <Footer />
     </main>
   );
 }

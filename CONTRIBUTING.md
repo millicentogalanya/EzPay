@@ -2,62 +2,40 @@
 
 Thank you for your interest in contributing to **EzPay**.
 
-For an overview of the project, see [`README.md`](README.md).
+EzPay is a Stellar-based payment infrastructure focused on simple, fast, and accessible stablecoin payments.
 
-We welcome contributions from developers, designers, blockchain enthusiasts, and anyone interested in improving open financial infrastructure.
+Before contributing, please read the [README.md](README.md) for an overview of the project.
 
-## Contents
+---
 
-- [Ways to Contribute](#ways-to-contribute)
-- [Development Setup](#development-setup)
-- [Project Structure](#project-structure)
-- [Branching Strategy](#branching-strategy)
-- [Commit Message Guidelines](#commit-message-guidelines)
-- [Pull Request Process](#pull-request-process)
-- [Code Style Guidelines](#code-style-guidelines)
-- [Writing Tests](#writing-tests)
-- [Reporting Bugs](#reporting-bugs)
-- [Suggesting Features](#suggesting-features)
-- [Community Guidelines](#community-guidelines)
-- [License](#license)
+# Ways to Contribute
 
-## Ways to Contribute
-
-You can contribute to EzPay in several ways:
+You can contribute by:
 
 - Fixing bugs
 - Improving documentation
-- Implementing new features
+- Adding new features
 - Improving payment flows
-- Enhancing developer experience
 - Writing tests
-- Improving UI/UX (for future frontend modules)
+- Improving developer experience
+- Enhancing Stellar integrations
 
-Before starting major work, please open an issue to discuss your idea.
+For major changes, please open an issue first to discuss your idea.
 
-## Development Setup
+---
 
-Follow these steps to set up the project locally.
+# Development Setup
 
-### 1. Fork the Repository
-
-Click the **Fork** button on GitHub to create your own copy of the repository.
-
-### 2. Clone Your Fork
+## Clone the Repository
 
 ```bash
 git clone https://github.com/your-username/ezpay.git
 cd ezpay
 ```
 
-### 3. Install Dependencies
+---
 
-```bash
-cd backend
-cargo build
-```
-
-### 4. Configure Environment Variables
+## Configure Environment Variables
 
 Copy the environment template:
 
@@ -65,158 +43,168 @@ Copy the environment template:
 cp .env.example .env
 ```
 
-Update the `.env` file with your local configuration.
-
 Example:
 
-```
+```env
 PORT=3001
-RUST_LOG=ezpay_backend=info,tower_http=info
+RUST_LOG=info
 STELLAR_NETWORK=testnet
 STELLAR_RPC_URL=
 STELLAR_SECRET_KEY=
-OFFRAMP_API_KEY=
 DATABASE_URL=
+ANCHOR_API_KEY=
 ```
 
-### 5. Run the Development Server
+---
+
+## Install Dependencies
+
+```bash
+cargo build
+```
+
+---
+
+## Run the Development Server
 
 ```bash
 cargo run
 ```
 
-## Project Structure
+---
 
+# Project Structure
+
+```text
+ezpay/
+├── src/
+├── tests/
+├── scripts/
+├── .env.example
+├── Cargo.toml
+├── README.md
+├── CONTRIBUTING.md
+└── LICENSE
 ```
-backend/
- ├── Cargo.toml
- ├── .env.example
- └── src/
-     └── main.rs
 
-frontend/
-smart-contract/
-```
+---
 
-## Branching Strategy
+# Branching Strategy
 
-Use clear and descriptive branch names.
+Use descriptive branch names.
 
 Examples:
 
-```
-feature/payment-flow
-feature/offramp-integration
-fix/stellar-transaction-error
+```text
+feature/qr-payments
+feature/anchor-integration
+fix/payment-validation
 docs/readme-update
 ```
 
-Avoid committing directly to the `main` branch.
+Avoid committing directly to `main`.
 
-## Commit Message Guidelines
+---
 
-Write clear and meaningful commit messages.
+# Commit Message Guidelines
 
-Use the following style when possible:
+Use clear commit messages.
 
+Examples:
+
+```text
+feat: add QR payment flow
+fix: resolve Stellar transaction validation issue
+docs: update setup instructions
+test: add payment service tests
 ```
-feat: add merchant wallet payment flow
-fix: resolve stellar transaction validation error
-docs: update README with architecture details
-refactor: simplify payment service logic
-test: add payment service unit tests
-```
 
-This helps maintain a readable project history.
+---
 
-## Pull Request Process
+# Pull Request Process
 
-When submitting a pull request:
+When submitting a PR:
 
 1. Create a feature branch
 2. Implement your changes
 3. Test your implementation
-4. Commit with clear messages
+4. Commit your changes
 5. Push to your fork
 6. Open a Pull Request
 
-Your PR should include:
-
-- A clear description of the change
-- Screenshots (if UI changes are included)
-- Steps to test the feature or fix
+Please include:
+- A clear description
+- Testing steps
 - Related issue (if applicable)
+
+---
+
+# Code Guidelines
+
+- Use Rust for backend development
+- Write modular and reusable code
+- Keep functions small and readable
+- Use descriptive naming
+- Validate payment-related inputs carefully
+
+---
+
+# Testing
+
+When adding features:
+- Include tests where possible
+- Validate payment flows
+- Handle transaction errors properly
+
+Critical areas include:
+- Stellar transaction handling
+- Payment validation
+- Merchant payout flows
+- Anchor integrations
+
+---
+
+# Reporting Bugs
+
+When reporting bugs, include:
+
+- Clear description
+- Steps to reproduce
+- Logs or screenshots (if available)
 
 Example:
 
-```
-Fixes #12
-Adds validation for merchant wallet addresses before submitting transactions to Stellar.
-```
+```text
+Issue:
+Invalid wallet addresses return internal server errors.
 
-## Code Style Guidelines
-
-Please follow these guidelines when contributing code:
-
-- Use **Rust** for backend development
-- Write modular and reusable code
-- Use descriptive variable and function names
-- Add comments for complex logic
-- Keep functions small and focused
-- Follow consistent formatting
-
-If formatting tools are added later (Prettier / ESLint), please ensure your code passes them.
-
-## Writing Tests
-
-Testing helps ensure reliability.
-
-When adding new features:
-
-- Include unit tests where possible
-- Test critical payment flows
-- Validate error handling
-
-Future improvements may introduce automated CI testing.
-
-## Reporting Bugs
-
-If you discover a bug:
-
-1. Open an issue
-2. Provide a clear description
-3. Include steps to reproduce
-4. Include logs or screenshots if available
-
-Example report:
-
-```
-Issue: Stellar transaction fails when merchant address is invalid.
-
-Steps to reproduce:
-1. Enter invalid wallet address
+Steps:
+1. Enter invalid Stellar address
 2. Submit payment
-3. API returns internal error instead of validation error
+3. API returns 500 error
 ```
 
-## Suggesting Features
+---
 
-We welcome feature suggestions.
+# Suggesting Features
 
-When proposing a feature, include:
+Feature suggestions are welcome.
 
-- The problem you are solving
-- The proposed solution
+Please include:
+- The problem
+- Proposed solution
 - Possible implementation ideas
 
-This helps maintain productive discussion.
+---
 
-## Community Guidelines
+# Community Guidelines
 
-Please be respectful and constructive when interacting with other contributors.
+Please be respectful and constructive when interacting with contributors.
 
-EzPay aims to build open financial infrastructure that benefits everyone.
+EzPay aims to build open financial infrastructure that is accessible and easy to use globally.
 
-## License
+---
 
-By contributing to EzPay, you agree that your contributions will be licensed under the **MIT License**.
+# License
+
+By contributing to EzPay, you agree that your contributions will be licensed under the MIT License.
